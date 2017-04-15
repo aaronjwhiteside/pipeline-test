@@ -1,1 +1,3 @@
-gitHubPullRequestAddComment("hello")
+stage ('test') {
+  gitHubPullRequestAddComment("hello")
+}
