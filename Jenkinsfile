@@ -1,3 +1,4 @@
 stage ('test') {
-  gitHubPullRequestAddComment("hello")
+  //gitHubPullRequestAddComment("hello")
+  pullRequest.comment("testing 123")
 }
