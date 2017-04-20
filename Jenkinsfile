@@ -4,6 +4,6 @@ stage ('test') {
   pullRequest.comment("testing 123, 456")
   
   for (comment in pullRequest['comments']) {
-    echo comment['body']
+    echo "Id: ${comment['id']}, User: ${comment['user']}, Body: ${comment['body']}, CreatedAt: ${comment['created_at']}"
   }
 }
