@@ -4,6 +4,6 @@ stage ('test') {
   pullRequest.comment("testing 123, 456")
   
   for (comment in pullRequest['comments']) {
-    comment.delete
+    comment.delete()
   }
 }
