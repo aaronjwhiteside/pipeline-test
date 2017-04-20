@@ -3,7 +3,7 @@ stage ('test') {
   pullRequest['title'] = "This title was updated by Jenkins"
   pullRequest.comment("testing 123, 456")
   
-  pullRequest['comments'].each { comment ->
+  for (comment in pullRequest['comments']) {
     echo comment['body']
   }
 }
