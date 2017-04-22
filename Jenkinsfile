@@ -6,7 +6,7 @@ stage ('test') {
   pullRequest.createStatus('success', null, null, null)
   pullRequest['locked'] = !pullRequest['locked']
   
-  for (assignee in pullRequest['assingees']) {
+  for (assignee in pullRequest['assignees']) {
     echo assignee
   }
   
