@@ -20,7 +20,7 @@ stage ('test') {
   }
     
   for (reviewComment in pullRequest['review_comments']) {
-      echo "Review comment, Author: ${comment['user']}, Body: ${comment['body']}"    
+      echo "Review comment, Author: ${reviewComment['user']}, Body: ${reviewComment['body']}"    
   }    
   
 //  for (comment in pullRequest['comments']) {
