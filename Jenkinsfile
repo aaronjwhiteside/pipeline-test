@@ -11,7 +11,7 @@ stage ('test') {
 //  }
   for (commit in pullRequest['commits']) {
     for (comment  in commit['comments']) {
-      echo "Commit: ${commit['sha'], Author: ${comment['user']}, Body: ${comment['body']}"
+      echo "Commit: ${commit['sha']}, Author: ${comment['user']}, Body: ${comment['body']}"
     }
   }
   
