@@ -1,6 +1,7 @@
 stage ('test') {
   //gitHubPullRequestAddComment("hello")
-  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
+//  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
+  pullRequest['labels'] = ['bug', 'duplicate']
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
   pullRequest.createStatus(status: 'success')
