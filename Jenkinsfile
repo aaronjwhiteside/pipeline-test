@@ -1,10 +1,10 @@
 stage ('test') {
   //gitHubPullRequestAddComment("hello")
 //  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
-  pullRequest['labels'] = ['bug', 'duplicate']
+//  pullRequest['labels'] = ['bug', 'duplicate']
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
-  pullRequest.createStatus(status: 'success')
+  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
 //  pullRequest['locked'] = !pullRequest['locked']
   
 //  for (assignee in pullRequest['assignees']) {
@@ -28,5 +28,5 @@ stage ('test') {
     comment.delete()
   }
   
-  pullRequest.createReviewRequests('aaronjwhiteside')
+//  pullRequest.createReviewRequests('aaronjwhiteside')
 }
