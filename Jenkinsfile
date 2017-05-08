@@ -1,6 +1,6 @@
 properties([
   pipelineTriggers([
-    issueCommentTrigger('.*')
+    issueCommentTrigger('.*build me.*')
   ])
 ])
 
