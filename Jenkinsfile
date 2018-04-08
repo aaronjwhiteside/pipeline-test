@@ -30,7 +30,7 @@ stage ('test') {
 //      echo "Review comment, Author: ${reviewComment['user']}, Body: ${reviewComment['body']}"    
 //  }    
   
-  for (comment in pullRequest['comments']) {
+  for (comment in pullRequest.comments) {
     comment.delete()
   }
   
