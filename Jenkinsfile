@@ -10,7 +10,12 @@ stage ('test') {
 //  pullRequest['labels'] = ['bug', 'duplicate']
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
-  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
+//  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
+pullRequest.createStatus(status: 'success',
+            context: 'continuous-integration/jenkins/pr-merge/validation',
+            description: 'Project passed all validations',
+            targetUrl: "${JOB_URL}")
+  
 //  pullRequest['locked'] = !pullRequest['locked']
   
 //  for (assignee in pullRequest['assignees']) {
