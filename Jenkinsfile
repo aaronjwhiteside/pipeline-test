@@ -17,6 +17,19 @@ pullRequest.createStatus(status: 'success',
             description: 'Project passed all validations',
             targetUrl: "${myUrl}")
   
+    if (pullRequest.commits) {
+        for (commit in pullRequest.commits) {
+            if (commit.sha == env.GIT_COMMIT) {
+                for (commitFile in commit.files) {
+                    echo "SHA: ${commitFile.sha} File Name: ${commitFile.filename} Status: ${commitFile.status}"
+                    if (!(commitFile.filename ==~ /\w\s+kubernetes\\/.+/)) {
+                        echo "HOORAAY"
+                    }
+                }
+            }
+        }
+    }  
+  
 //  pullRequest['locked'] = !pullRequest['locked']
   
 //  for (assignee in pullRequest['assignees']) {
