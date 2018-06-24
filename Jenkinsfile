@@ -14,7 +14,7 @@ stage ('test') {
 pullRequest.createStatus(status: 'success',
             context: 'continuous-integration/jenkins/pr-merge/validation',
             description: 'Project passed all validations',
-            targetUrl: "${JOB_URL}")
+            targetUrl: "${env.JOB_URL}")
   
 //  pullRequest['locked'] = !pullRequest['locked']
   
