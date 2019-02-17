@@ -13,6 +13,15 @@ stage ('test') {
 
   echo "Labels: ${pullRequest.getLabels().collect()}"
   
+        authors = []
+        for (commit in pullRequest.commits) {
+           authors.push(commit.author)
+           authors.push(commit.committer)
+        }
+        authors = authors.unique().join(' ')
+  
+  echo "Unique Authors: ${authors}"
+  
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
 //  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
