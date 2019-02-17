@@ -12,7 +12,7 @@ stage ('test') {
 
   echo "Labels: ${pullRequest.getLabels().collect()}"
   
-  pullRequest.setBody(pullRequest.getBody() + '\nhello world')
+  pullRequest.setBody(pullRequest.getBody() + '\nhello world \nweeeeeee abc')
   
 //        authors = []
 //        for (commit in pullRequest.commits) {
