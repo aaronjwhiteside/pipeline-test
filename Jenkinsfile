@@ -8,19 +8,19 @@ stage ('test') {
   //gitHubPullRequestAddComment("hello")
 //  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
   pullRequest.setLabels(['bug', 'duplicate'])
-  
   pullRequest.removeLabel('bug')
 
   echo "Labels: ${pullRequest.getLabels().collect()}"
   
-        authors = []
-        for (commit in pullRequest.commits) {
-           authors.push(commit.author)
-           authors.push(commit.committer)
-        }
-        authors = authors.unique().join(' ')
+  pullRequest.setBody(pullRequest.getBody() + '\nhello world')
   
-  echo "Unique Authors: ${authors}"
+//        authors = []
+//        for (commit in pullRequest.commits) {
+//           authors.push(commit.author)
+//           authors.push(commit.committer)
+//        }
+//        authors = authors.unique().join(' ')
+//  echo "Unique Authors: ${authors}"
   
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
@@ -31,18 +31,18 @@ pullRequest.createStatus(status: 'success',
             description: 'Project passed all validations',
             targetUrl: "${myUrl}")
   
-    if (pullRequest.commits) {
-        for (commit in pullRequest.commits) {
-            if (commit.sha == env.GIT_COMMIT) {
-                for (commitFile in commit.files) {
-                    echo "SHA: ${commitFile.sha} File Name: ${commitFile.filename} Status: ${commitFile.status}"
-                    if (!(commitFile.filename ==~ /\w\s+kubernetes\\/.+/)) {
-                        echo "HOORAAY"
-                    }
-                }
-            }
-        }
-    }  
+//    if (pullRequest.commits) {
+//        for (commit in pullRequest.commits) {
+//            if (commit.sha == env.GIT_COMMIT) {
+//                for (commitFile in commit.files) {
+//                    echo "SHA: ${commitFile.sha} File Name: ${commitFile.filename} Status: ${commitFile.status}"
+//                    if (!(commitFile.filename ==~ /\w\s+kubernetes\\/.+/)) {
+//                        echo "HOORAAY"
+//                    }
+//                }
+//            }
+//        }
+//    }  
   
 //  pullRequest['locked'] = !pullRequest['locked']
   
@@ -63,9 +63,9 @@ pullRequest.createStatus(status: 'success',
 //      echo "Review comment, Author: ${reviewComment['user']}, Body: ${reviewComment['body']}"    
 //  }    
   
-  for (comment in pullRequest.comments) {
-    comment.delete()
-  }
+//  for (comment in pullRequest.comments) {
+//    comment.delete()
+//  }
   
 //  pullRequest.createReviewRequests('aaronjwhiteside')
 }
