@@ -11,7 +11,8 @@ stage ('test') {
   
   pullRequest.removeLabel('bug')
 
-
+  echo "Labels: ${pullRequest.getLabels().collect()}"
+  
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
 //  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
