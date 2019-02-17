@@ -7,7 +7,7 @@ properties([
 stage ('test') {
   //gitHubPullRequestAddComment("hello")
 //  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
-  pullRequest['labels'] = ['bug', 'duplicate']
+  pullRequest.setLabels(['bug', 'duplicate'])
   
   pullRequest.removeLabel('bug')
 
