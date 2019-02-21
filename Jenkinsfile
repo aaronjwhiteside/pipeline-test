@@ -4,8 +4,12 @@ properties([
   ])
 ])
 
+node {
 stage ('pre-test') {
 }
+}
+
+node {
 
 stage ('test') {
   //gitHubPullRequestAddComment("hello")
@@ -72,7 +76,7 @@ pullRequest.createStatus(status: 'success',
   
 //  pullRequest.createReviewRequests('aaronjwhiteside')
 }
-
+}
 stage ('post-test') {
   
 }
