@@ -4,6 +4,9 @@ properties([
   ])
 ])
 
+stage ('pre-test') {
+}
+
 stage ('test') {
   //gitHubPullRequestAddComment("hello")
 //  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
@@ -68,4 +71,8 @@ pullRequest.createStatus(status: 'success',
 //  }
   
 //  pullRequest.createReviewRequests('aaronjwhiteside')
+}
+
+stage ('post-test') {
+  
 }
