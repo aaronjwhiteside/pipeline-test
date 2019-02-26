@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    when { 
-        changeRequest() 
-    }
     stages {
         stage('Test') {
+            when { 
+                changeRequest() 
+            }
             steps {
                 echo "Current Pull Request ID: ${pullRequest.id}"
             }
