@@ -1,25 +1,41 @@
-properties([
-  pipelineTriggers([
-    issueCommentTrigger('.*build me.*')
-  ])
-])
-
-node {
-stage ('pre-test') {
+pipeline {
+    agent any
+    when { 
+        changeRequest() 
+    }
+    stages {
+        stage('Test') {
+            steps {
+                echo "Current Pull Request ID: ${pullRequest.id}"
+            }
+        }
+    }
 }
-}
 
-node {
 
-stage ('test') {
+
+//properties([
+//  pipelineTriggers([
+//    issueCommentTrigger('.*build me.*')
+//  ])
+//])
+
+//node {
+//stage ('pre-test') {
+//}
+//}
+
+//node {
+
+//stage ('test') {
   //gitHubPullRequestAddComment("hello")
 //  pullRequest['title'] = "This title was updated by Jenkins, testing 123"
-  pullRequest.setLabels(['bug', 'duplicate'])
-  pullRequest.removeLabel('bug')
+//  pullRequest.setLabels(['bug', 'duplicate'])
+//  pullRequest.removeLabel('bug')
 
-  echo "Labels: ${pullRequest.getLabels().collect()}"
+//  echo "Labels: ${pullRequest.getLabels().collect()}"
   
-  pullRequest.setBody(pullRequest.getBody() + '\nhello world \nweeeeeee abc')
+//  pullRequest.setBody(pullRequest.getBody() + '\nhello world \nweeeeeee abc')
   
 //        authors = []
 //        for (commit in pullRequest.commits) {
@@ -32,11 +48,11 @@ stage ('test') {
 //  pullRequest.comment("testing 123, 456")
 //  pullRequest.reviewComment(pullRequest['head'], 'Jenkinsfile', 2, 'why is this commented out?')
 //  pullRequest.createStatus(status: 'success', context: 'Pipeline', description: 'Wooohooo!')
-def myUrl = "https://www.google.com"
-pullRequest.createStatus(status: 'success',
-            context: 'continuous-integration/jenkins/pr-merge/validation',
-            description: 'Project passed all validations',
-            targetUrl: "${myUrl}")
+//def myUrl = "https://www.google.com"
+//pullRequest.createStatus(status: 'success',
+//            context: 'continuous-integration/jenkins/pr-merge/validation',
+//            description: 'Project passed all validations',
+//            targetUrl: "${myUrl}")
   
 //    if (pullRequest.commits) {
 //        for (commit in pullRequest.commits) {
@@ -75,8 +91,8 @@ pullRequest.createStatus(status: 'success',
 //  }
   
 //  pullRequest.createReviewRequests('aaronjwhiteside')
-}
-}
-stage ('post-test') {
+//}
+//}
+//stage ('post-test') {
   
-}
+//}
